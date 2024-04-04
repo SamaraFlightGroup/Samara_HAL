@@ -3,6 +3,6 @@
 
 int main()
 {
-    std::cout << "Test\n";
+    std::cout << "TestGPIOcxx\n";
     return 0;
 }

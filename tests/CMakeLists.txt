@@ -3,7 +3,9 @@ cmake_minimum_required(VERSION 3.2)
 set(CMAKE_EXPORT_COMPILE_COMMANDS true)
 
 project(testSamaraHAL)
+enable_testing()
 
+set(CMAKE_BUILD_TYPE "Debug")
 set(CMAKE_VERBOSE_MAKEFILE true)
 
 enable_language(C CXX ASM)
@@ -43,6 +45,8 @@ foreach(TEST_SOURCE ${TEST_SOURCES})
     add_executable(${TEST_EXECUTABLE} ${TEST_SOURCE})
 
     target_link_libraries(${TEST_EXECUTABLE} SAMARA_HAL)
+
+    add_test(NAME ${TEST_NAME} COMMAND "./${TEST_NAME}.elf")
 
 endforeach(TEST_SOURCE TEST_SOURCES)
 
