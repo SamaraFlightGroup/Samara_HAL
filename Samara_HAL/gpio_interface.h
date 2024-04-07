@@ -1,5 +1,5 @@
-#ifndef GPIO_INTERFACE
-#define GPIO_INTERFACE
+#ifndef GPIO_INTERFACE_H
+#define GPIO_INTERFACE_H
 
 #include <stdint.h>
 
@@ -35,12 +35,12 @@ struct __gpio_interface
     void (*deinit)(void);
 
     void (*setDir)(__gpio_direction_t dir);
-    void (*read)(uint8_t padOffset);
-    void (*write)(uint8_t padOffset,__gpio_val_t val);
-    void (*toggle)(uint8_t padOffset);
+    uint32_t (*read)(uint8_t padOffset);
+    uint32_t (*write)(uint8_t padOffset,__gpio_val_t val);
+    uint32_t (*toggle)(uint8_t padOffset);
 
     void (*attachIrq)(uint8_t padOffset, __gpio_irq_t irqType);
-    void (*setIRQCallback)(void (*callback)(void));
+    void (*setIRQCallback)(uint32_t (*callback)(void));
 };
 
 #ifdef __cplusplus

@@ -1,4 +1,4 @@
-#include "GPIO_interface.h"
+#include "gpio_interface.h"
 #include <stdio.h>
 
 void printTest()
@@ -7,10 +7,10 @@ void printTest()
 }
 int main()
 {
-    struct GPIO_interface interface;
-    interface.test = printTest;
+    struct __gpio_interface interface;
+    interface.init = printTest;
 
-    interface.test();
+    interface.init();
 
     return 0;
 }

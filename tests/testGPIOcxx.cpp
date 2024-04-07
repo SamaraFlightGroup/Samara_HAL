@@ -1,4 +1,4 @@
-#include "GPIO_interface.h"
+#include "gpio_interface.h"
 #include <iostream>
 
 int main()
