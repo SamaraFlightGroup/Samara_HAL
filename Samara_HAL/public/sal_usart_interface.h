@@ -35,19 +35,21 @@ typedef enum
 
 typedef enum
 {
-    USART_ACCESS_READ,
-    USART_ACCESS_WRITE,
-    USART_ACCESS_RW
+    USART_ACCESS_RX,
+    USART_ACCESS_TX,
+    USART_ACCESS_BOTH
 } sal_usart_access_t;
 
 typedef struct sal_usart_config
 {
 
-    uint32_t baud_rate;
+    uint32_t             baud_rate;
 
-    sal_usart_length_t length;
+    sal_usart_access_t   access;
 
-    sal_usart_parity_t parity;
+    sal_usart_length_t   length;
+
+    sal_usart_parity_t   parity;
 
     sal_usart_stopBits_t stop_bits;
 
@@ -62,9 +64,7 @@ typedef struct sal_usart_config
 typedef struct sal_usart_obj
 {
 
-    sal_mem_map_periph_t periph;
-
-    sal_usart_access_t   dir;
+    sal_mem_map_periph_t usart_periph;
 
     sal_usart_config_t   usart_config;
 
