@@ -49,5 +49,3 @@ foreach(TEST_SOURCE ${TEST_SOURCES})
     add_test(NAME ${TEST_NAME} COMMAND "./${TEST_NAME}.elf")
 
 endforeach(TEST_SOURCE TEST_SOURCES)
-
-

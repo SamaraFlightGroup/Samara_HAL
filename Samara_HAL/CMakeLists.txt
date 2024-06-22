@@ -1,0 +1,3 @@
+add_library(SAMARA_HAL INTERFACE)
+
+target_include_directories(SAMARA_HAL INTERFACE public)

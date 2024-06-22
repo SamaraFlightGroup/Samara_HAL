@@ -1,16 +1,17 @@
-#include "gpio_interface.h"
+#include "sal_gpio_interface.h"
 #include <stdio.h>
 
-void printTest()
+void printTest(sal_gpio_obj_t* gpio)
 {
     printf("TestGPIO\n");
 }
+
 int main()
 {
-    struct __gpio_interface interface;
+    struct sal_gpio_interface interface;
     interface.init = printTest;
 
-    interface.init();
+    interface.init(NULL);
 
     return 0;
 }

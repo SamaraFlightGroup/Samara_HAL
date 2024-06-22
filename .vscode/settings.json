@@ -1,3 +1,14 @@
 {
     "cmake.sourceDirectory": "${workspaceFolder}/tests",
+    "vim.useSystemClipboard": true,
+    "vim.handleKeys": {
+        "<C-d>": true,
+        "<C-s>": false,
+        "<C-z>": false,
+        "<C-p>": false
+    },
+    "files.associations": {
+        "stdint.h": "c",
+        "stdint-gcc.h": "c"
+    }
 }
