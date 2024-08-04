@@ -55,7 +55,7 @@ typedef struct sal_usart_config
 
     sal_usart_polarity_t polarity;
 
-} sal_usart_config_t;
+} sal_usart_config_s;
 
 /**
  * @brief
@@ -64,13 +64,13 @@ typedef struct sal_usart_config
 typedef struct sal_usart_obj
 {
 
-    sal_mem_map_periph_t usart_periph;
+    sal_mem_map_periph_s usart_periph;
 
-    sal_usart_config_t   usart_config;
+    sal_usart_config_s   usart_config;
 
-    sal_dma_config_t     dma_config;
+    sal_dma_config_s     dma_config;
 
-} sal_usart_obj_t;
+} sal_usart_obj_s;
 
 /**
  * @brief
@@ -79,26 +79,26 @@ typedef struct sal_usart_obj
 struct sal_usart_interface
 {
     /* Request and Release objects */
-    bool (*request)           (sal_usart_obj_t* usart_obj, sal_usart_access_t    access);
+    bool (*request)           (sal_usart_obj_s* usart_obj, uint8_t uart_num, sal_usart_access_t    access);
 
-    void (*release)           (sal_usart_obj_t* usart_obj);
+    void (*release)           (sal_usart_obj_s* usart_obj);
 
     /* Initialization and Deinitialization */
-    void (*init)              (sal_usart_obj_t* usart_obj);
+    void (*init)              (sal_usart_obj_s* usart_obj);
 
-    void (*deinit)            (sal_usart_obj_t* usart_obj);
+    void (*deinit)            (sal_usart_obj_s* usart_obj);
 
     /* General Configuration*/
-    bool (*setConfig)         (sal_usart_obj_t* usart_obj, sal_usart_config_t*   usart_config);
+    bool (*setConfig)         (sal_usart_obj_s* usart_obj, sal_usart_config_s*   usart_config);
 
-    bool (*enable)            (sal_usart_obj_t* usart_obj);
+    bool (*enable)            (sal_usart_obj_s* usart_obj);
 
-    bool (*disable)           (sal_usart_obj_t* usart_obj);
+    bool (*disable)           (sal_usart_obj_s* usart_obj);
 
     /* DMA Configuration */
-    bool (*startDMA)          (sal_usart_obj_t* usart_obj, sal_dma_periph_config_t dma_periph_config);
+    bool (*startDMA)          (sal_usart_obj_s* usart_obj, sal_dma_periph_config_s dma_periph_config);
 
-    void (*stopDMA)           (sal_usart_obj_t* usart_obj);
+    void (*stopDMA)           (sal_usart_obj_s* usart_obj);
 
     /* Status Functions */
     uint32_t (*getFIFOCount)  (void);

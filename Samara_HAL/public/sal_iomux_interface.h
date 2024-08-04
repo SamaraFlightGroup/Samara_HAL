@@ -68,7 +68,7 @@ typedef struct sal_iomuxc_pad_config
     sal_iomuxc_strength_t strength;
     sal_iomuxc_slew_t     slew;
 
-} sal_iomuxc_pad_config_t;
+} sal_iomuxc_pad_config_s;
 
 /**
  * @brief
@@ -82,7 +82,7 @@ typedef struct sal_iomuxc_registers
 
     unsigned int* sel_input_reg;
 
-} sal_iomuxc_registers_t;
+} sal_iomuxc_registers_s;
 
 /**
  * @brief
@@ -94,11 +94,11 @@ typedef struct sal_iomux_config
 
     uint8_t                 daisy_sel;
 
-    sal_iomuxc_registers_t  regs;
+    sal_iomuxc_registers_s  regs;
 
-    sal_iomuxc_pad_config_t pad_config;
+    sal_iomuxc_pad_config_s pad_config;
 
-} sal_iomuxc_config_t;
+} sal_iomuxc_config_s;
 
 /**
  * @brief
@@ -106,12 +106,12 @@ typedef struct sal_iomux_config
  */
 struct sal_iomux_interface
 {
-    bool (*request)         (sal_iomuxc_config_t* iomux_port, unsigned int mux_index, unsigned int pad_index, unsigned int sel_input_index);
-    void (*release)         (sal_iomuxc_config_t* iomux_port);
+    bool (*request)         (sal_iomuxc_config_s* iomux_port, unsigned int mux_index, unsigned int pad_index, unsigned int sel_input_index);
+    void (*release)         (sal_iomuxc_config_s* iomux_port);
 
-    bool (*setMuxMode)      (sal_iomuxc_config_t* iomux_port, uint8_t mux_mode);
-    bool (*setPadConfig)    (sal_iomuxc_config_t* iomux_port, sal_iomuxc_pad_config_t* config);
-    bool (*setDaisyMode)    (sal_iomuxc_config_t* iomux_port, uint8_t daisy_mode);
+    bool (*setMuxMode)      (sal_iomuxc_config_s* iomux_port, uint8_t mux_mode);
+    bool (*setPadConfig)    (sal_iomuxc_config_s* iomux_port, sal_iomuxc_pad_config_s* config);
+    bool (*setDaisyMode)    (sal_iomuxc_config_s* iomux_port, uint8_t daisy_mode);
 };
 
 EXTERN_C_END

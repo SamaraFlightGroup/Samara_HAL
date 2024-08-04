@@ -68,7 +68,7 @@ typedef enum
 typedef struct sal_gpio_obj
 {
 
-    sal_mem_map_periph_t gpio_periph;
+    sal_mem_map_periph_s gpio_periph;
 
     uint8_t           periph_num;
 
@@ -87,22 +87,22 @@ typedef struct sal_gpio_obj
     // Callback for IRQ
     unsigned int      (*irq_callback)(void);
 
-} sal_gpio_obj_t;
+} sal_gpio_obj_s;
 
 struct sal_gpio_interface
 {
-    bool    (*request)        (sal_gpio_obj_t* gpio_obj, unsigned int pad_mask);
-    void    (*release)        (sal_gpio_obj_t* gpio_obj);
+    bool    (*request)        (sal_gpio_obj_s* gpio_obj, unsigned int pad_mask);
+    void    (*release)        (sal_gpio_obj_s* gpio_obj);
 
-    void    (*init)           (sal_gpio_obj_t* gpio_obj);
-    void    (*deinit)         (sal_gpio_obj_t* gpio_obj);
+    void    (*init)           (sal_gpio_obj_s* gpio_obj);
+    void    (*deinit)         (sal_gpio_obj_s* gpio_obj);
 
-    void     (*setDir)         (sal_gpio_obj_t* gpio_obj, sal_gpio_direction_t dir);
-    void     (*write)          (sal_gpio_obj_t* gpio_obj, sal_gpio_val_t val);
-    uint16_t (*read)           (sal_gpio_obj_t* gpio_obj);
-    void     (*toggle)         (sal_gpio_obj_t* gpio_obj);
+    void     (*setDir)         (sal_gpio_obj_s* gpio_obj, sal_gpio_direction_t dir);
+    void     (*write)          (sal_gpio_obj_s* gpio_obj, sal_gpio_val_t val);
+    uint16_t (*read)           (sal_gpio_obj_s* gpio_obj);
+    void     (*toggle)         (sal_gpio_obj_s* gpio_obj);
 
-    void    (*attachIrq)      (sal_gpio_obj_t* gpio_obj, sal_gpio_irq_trig_t irq_type);
+    void    (*attachIrq)      (sal_gpio_obj_s* gpio_obj, sal_gpio_irq_trig_t irq_type);
     void    (*setIRQCallback) (uint32_t (*callback)(void));
 };
 

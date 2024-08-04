@@ -3,6 +3,7 @@
 
 
 #include "sal_common.h"
+#include "sal_error.h"
 
 EXTERN_C_START
 
@@ -11,18 +12,20 @@ typedef struct sal_mem_map_periph
 
     unsigned int periph_addr;
 
-    uint8_t      perip_num;
+    unsigned int perip_num;
 
-} sal_mem_map_periph_t;
+} sal_mem_map_periph_s;
 
 typedef struct sal_irq_config
 {
 
-    uint8_t             irq_trig;
+    unsigned int irq_priority;
 
-    void(*irq_callback) (void);
+    unsigned int irq_trig;
 
-} sal_irq_config_t;
+    void         (*irq_callback) (void);
+
+} sal_irq_config_s;
 
 EXTERN_C_END
 
